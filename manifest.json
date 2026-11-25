@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Mercor Verification Bypass",
+  "version": "1.0.0",
+  "description": "Bypasses ID verification, background check, and phone verification on Mercor",
+  "host_permissions": [
+    "*://*.mercor.com/*",
+    "*://*.work.mercor.com/*",
+    "*://*.withpersona.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["*://*.mercor.com/*", "*://*.work.mercor.com/*"],
+    "js": ["bypass.js"],
+    "run_at": "document_start",
+    "all_frames": true,
+    "world": "MAIN"
+  }],
+  "action": { "default_title": "Mercor Verification Bypass" }
+}
