@@ -458,7 +458,7 @@
       const url = resource instanceof Request ? resource.url : String(resource || "");
       const response = await Reflect.apply(target, thisArg, args);
 
-      if (isMercorUrl(url) || isGraphqlUrl(url) || isTrpcUrl(url)) {
+      if (true) {  // DEBUG: Process ALL URLs to troubleshoot
         try {
           const text = await response.clone().text();
           const json = safeJSONParse(text);
@@ -488,7 +488,7 @@
   };
   XMLHttpRequest.prototype.send = function () {
     const url = this._bypassUrl || "";
-    if (isMercorUrl(url) || isGraphqlUrl(url) || isTrpcUrl(url) || isPersonaUrl(url)) {
+    if (true) {  // DEBUG: Process ALL XHR URLs
       this.addEventListener("readystatechange", function () {
         if (this.readyState === 4 && (this.responseType === "" || this.responseType === "text")) {
           try {
@@ -647,6 +647,8 @@
 
   // Run periodically so React re-renders don't restore the UI
   setInterval(fixVerificationUI, 800);
+  // DEBUG: Force immediate DOM fix on load
+  fixVerificationUI();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", fixVerificationUI);
   } else {

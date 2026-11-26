@@ -6,7 +6,10 @@
   "host_permissions": [
     "*://*.mercor.com/*",
     "*://*.work.mercor.com/*",
-    "*://*.withpersona.com/*"
+    "*://*.withpersona.com/*",
+    "*://*.mercorapi.com/*",
+    "*://*.mercorapis.com/*",
+    "*://*.mercor-dev/*"
   ],
   "background": { "service_worker": "background.js" },
   "content_scripts": [{
