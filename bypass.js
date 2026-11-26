@@ -10,7 +10,7 @@
   }
 
   function isMercorUrl(url) {
-    return typeof url === "string" && url.includes("work.mercor.com");
+    return typeof url === "string" && (url.includes("work.mercor.com") || url.includes(".mercor.com/"));
   }
 
   function isPersonaUrl(url) {
@@ -486,7 +486,7 @@
     this._bypassUrl = url;
     return originalOpen.apply(this, arguments);
   };
-  XMLHttpXHR.prototype.send = function () {
+  XMLHttpRequest.prototype.send = function () {
     const url = this._bypassUrl || "";
     if (isMercorUrl(url) || isGraphqlUrl(url) || isTrpcUrl(url) || isPersonaUrl(url)) {
       this.addEventListener("readystatechange", function () {
