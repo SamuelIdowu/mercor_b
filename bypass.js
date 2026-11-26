@@ -646,10 +646,10 @@
   }
 
   // Run periodically so React re-renders don't restore the UI
-  setInterval(fixIdentityUI, 800);
+  setInterval(fixVerificationUI, 800);
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fixIdentityUI);
+    document.addEventListener("DOMContentLoaded", fixVerificationUI);
   } else {
-    fixIdentityUI();
+    fixVerificationUI();
   }
 })();
